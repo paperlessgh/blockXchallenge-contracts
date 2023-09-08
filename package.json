@@ -9,5 +9,9 @@
     "@chainlink/contracts": "^0.6.1",
     "@openzeppelin/contracts": "^4.9.3",
     "dotenv": "^16.3.1"
+  },
+  "scripts": {
+    "test": "npx hardhat test",
+    "gas-test": "REPORT_GAS=true npx hardhat test"
   }
 }
