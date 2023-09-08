@@ -1,7 +1,7 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  const shadow = await ethers.deployContract("ShadowChallenge");
+  const shadow = await ethers.deployContract("PoolChallange");
 
   await shadow.waitForDeployment();
 

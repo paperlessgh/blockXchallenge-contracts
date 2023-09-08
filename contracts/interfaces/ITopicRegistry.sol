@@ -20,17 +20,11 @@ interface ITopicRegistry {
         string memory description,
         address maintainer,
         address evaluator
-    ) external;
-
-    function modifyTopic(
-        uint topicId,
-        string memory title,
-        string memory description,
-        address maintainer,
-        address evaluator
-    ) external;
+    ) external returns (uint);
 
     function disableTopic(uint topicId) external;
+
+    function enableTopic(uint topicId) external;
 
     function getTopic(uint topicId) external view returns (Topic memory);
 }

@@ -9,15 +9,17 @@ interface IEvaluator {
         external
         view
         returns (
-            bytes memory result,
+            bytes memory results,
             address[] memory losers,
             address[] memory winners
         );
 
     function validateChallenge(
-        IChallengePool.Challenge calldata challenge
+        bytes memory params,
+        bytes memory proposal
     ) external view returns (bool);
 
-    function resultsTemplate() external view returns (string memory);
-    function paramsTemplate() external view returns (string memory);
+    function resultsType() external view returns (string memory);
+
+    function paramsType() external view returns (string memory);
 }
