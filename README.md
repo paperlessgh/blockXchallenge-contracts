@@ -1,3 +1,9 @@
+# Challenge Pools
+
+A wierd diagram of how the smart contract is all linked together.
+
+![Architecture](https://github.com/paperlessgh/blockXchallenge/blob/main/images/blockxchallenge-contracts.png)
+
 ## Initial Deployment & Setup Steps
 
 1. Deploy TopicRegistry to get `REGISTRY_CONTRACT`
@@ -75,6 +81,34 @@
   "value": "0"
 }
 ```
+2. Optimistic Goerli
+```json
+{
+  "_type": "TransactionReceipt",
+  "accessList": [],
+  "blockNumber": 14397864,
+  "blockHash": "0x45a45223ee4966144361897656ec2e2f7f39c0cfa023b19c90d249ae3981d997",
+  "chainId": "420",
+  "data": "0x779537F265e508c3eCA407FfA342a64489C2d3C9",
+  "from": "0xC001c172d6534C9bA10bA20bd2e388F8e2943c67",
+  "gasLimit": "2405022",
+  "gasPrice": "1100000000",
+  "hash": "0x9ff11a5f5bc34e57f633ca5319de75ce67ff27f9a40f5670454cfbf4b28bebba",
+  "maxFeePerGas": "1100000014",
+  "maxPriorityFeePerGas": "1099999950",
+  "nonce": 12,
+  "signature": {
+    "_type": "signature",
+    "networkV": null,
+    "r": "0xf2e8b4c80f9f2b0e2197fd1739288739184d825792e6405bc655188bfa3c275a",
+    "s": "0x73224f16a89a8802f7c6b9c9616c824050b43e632bd5ad71bb31eb686de13351",
+    "v": 27
+  },
+  "to": null,
+  "type": 2,
+  "value": "0"
+}
+```
 
 #### Pool Manager
 1. Optimistic Goerli
@@ -99,6 +133,34 @@
     "r": "0xe1f8e5c20b4bf5f326f12a26638cc5f8c3eef0ade4b2010c97a03a4c67107bac",
     "s": "0x12a80998d11845f5ab6f97c2735f44fce3221fe5895114f85266839d5161605c",
     "v": 28
+  },
+  "to": null,
+  "type": 2,
+  "value": "0"
+}
+```
+2. Optimistic Goerli
+```json
+{
+  "_type": "TransactionReceipt",
+  "accessList": [],
+  "blockNumber": 14397971,
+  "blockHash": "0x80ca12c244994a0ac949d42bca46c53ede002184a0aa41cf2cba521ea7e6e807",
+  "chainId": "420",
+  "data": "0x0727400d4E4a672D47ecAf76ADcC6E90b4414Eb8",
+  "from": "0xC001c172d6534C9bA10bA20bd2e388F8e2943c67",
+  "gasLimit": "444199",
+  "gasPrice": "1000000000",
+  "hash": "0x6aacf85767501ca2383eb63f34526dfe829c879a9cbb5507fd3918a453eb001f",
+  "maxFeePerGas": "1000000013",
+  "maxPriorityFeePerGas": "999999950",
+  "nonce": 13,
+  "signature": {
+    "_type": "signature",
+    "networkV": null,
+    "r": "0x43271a192001e656428a8d169f0496ab76ec1e342762aae11fd9994b418c5415",
+    "s": "0x0a691042dfd435c183b85f7a60cef8a0bca99b68068e6186235446e5be6952ba",
+    "v": 27
   },
   "to": null,
   "type": 2,

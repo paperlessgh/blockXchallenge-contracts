@@ -1,13 +1,18 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
+import "@openzeppelin/contracts/access/Ownable.sol";
 import "./interfaces/IPoolManager.sol";
 import "./interfaces/IChallengePool.sol";
 
-contract PoolManager is IPoolManager {
-    address public immutable challengePool;
+contract PoolManager is IPoolManager, Ownable {
+    address public challengePool;
 
     constructor(address _challengePool) {
+        challengePool = _challengePool;
+    }
+
+    function setChallengePool(address _challengePool) public onlyOwner {
         challengePool = _challengePool;
     }
 

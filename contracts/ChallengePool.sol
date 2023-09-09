@@ -36,7 +36,7 @@ contract ChallengePool is IChallengePool, Ownable {
 
     modifier validMaturity(uint _maturity) {
         require(
-            _maturity < block.timestamp + minMaturity,
+            _maturity >= block.timestamp + minMaturity,
             "Invalid Maturity date"
         );
         _;
