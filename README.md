@@ -34,3 +34,6 @@ https://goerli-optimism.etherscan.io/address/0xD6f63ED5b7c90A429DbC090FC2960e60B
 
 #### Asset Price
 https://goerli-optimism.etherscan.io/address/0xdf2219b830d17d9761f7e84de20341921b10f52e
+
+#### Chainlink Keeper
+https://automation.chain.link/optimism-goerli/47150890484017242622405763327470423517070820129141286249936460739223164634685
