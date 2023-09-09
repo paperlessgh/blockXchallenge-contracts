@@ -8,12 +8,12 @@ contract SymbolFeedUSD is Ownable {
     mapping(string => address) public symbolAggregators;
     string[] public symbols;
 
-    constructor() {}
 
-    function setSymbols(
-        string[] memory _symbols,
-        address[] memory _aggregators
-    ) public onlyOwner {
+    constructor() {
+        
+    }
+
+    function setSymbols(string[] memory _symbols, address[] memory _aggregators) public onlyOwner {
         require(_symbols.length == _aggregators.length, "Lengths not equal.");
         for (uint256 i = 0; i < _symbols.length; i++) {
             symbolAggregators[_symbols[i]] = _aggregators[i];
@@ -29,13 +29,12 @@ contract SymbolFeedUSD is Ownable {
             symbolAggregators[symbol]
         );
         (
-            ,
-            /* uint80 roundID */ int answer,
-            ,
-            ,
-
-        ) = /*uint startedAt*/ /*uint timeStamp*/ /*uint80 answeredInRound*/
-            dataFeed.latestRoundData();
+            /* uint80 roundID */,
+            int answer,
+            /*uint startedAt*/,
+            /*uint timeStamp*/,
+            /*uint80 answeredInRound*/
+        ) = dataFeed.latestRoundData();
         return answer;
     }
 }

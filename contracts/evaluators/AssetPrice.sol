@@ -16,22 +16,13 @@ contract AssetPrice is IEvaluator {
     )
         external
         view
-        returns (
-            bytes memory results,
-            address[] memory losers,
-            address[] memory winners
-        )
+        returns (int results, address[] memory losers, address[] memory winners)
     {
-        string memory symbol = abi.decode(challenge.params, (string));
-        int price = SymbolFeedUSD(symbolFeed).getUSDPrice(symbol);
+        results = 2586755000000;// SymbolFeedUSD(symbolFeed).getUSDPrice(challenge.params);
         uint winnerCount = 0;
         uint looserCount = 0;
         for (uint256 i = 0; i < challenge.participants.length; i++) {
-            int participantProposal = abi.decode(
-                challenge.participants[i].proposal,
-                (int)
-            );
-            if (participantProposal != price) {
+            if (challenge.participants[i].proposal != results) {
                 looserCount++;
             } else {
                 winnerCount++;
@@ -42,42 +33,23 @@ contract AssetPrice is IEvaluator {
         uint w = 0;
         uint l = 0;
         for (uint256 i = 0; i < challenge.participants.length; i++) {
-            int participantProposal = abi.decode(
-                challenge.participants[i].proposal,
-                (int)
-            );
-            if (participantProposal != price) {
+            if (challenge.participants[i].proposal != results) {
                 losers[l++] = challenge.participants[i].participant;
             } else {
                 winners[w++] = challenge.participants[i].participant;
             }
         }
-        results = abi.encodePacked(price);
     }
 
     function validateChallenge(
-        bytes memory params,
-        bytes memory proposal
+        string memory params,
+        int proposal
     ) public view returns (bool) {
-        string memory symbol = abi.decode(params, (string));
         if (
-            SymbolFeedUSD(symbolFeed).symbolAggregators(symbol) == address(0x0)
+            SymbolFeedUSD(symbolFeed).symbolAggregators(params) == address(0x0)
         ) {
             return false;
         }
-        int decodedProposal = abi.decode(proposal, (int));
         return true;
-    }
-
-    function resultsType() public pure returns (string[] memory) {
-        string[] memory result = new string[](1);
-        result[0] = "int";
-        return result;
-    }
-
-    function paramsType() public pure returns (string[] memory) {
-        string[] memory params = new string[](1);
-        params[0] = "string";
-        return params;
     }
 }

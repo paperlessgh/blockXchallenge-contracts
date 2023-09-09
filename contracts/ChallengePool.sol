@@ -21,10 +21,10 @@ contract ChallengePool is IChallengePool, Ownable {
     address public feeAddress;
     uint public accumulatedFees;
 
-    uint public minMaturity = 3 minutes;
-    uint public joiningThreshold = 3;
-    uint public participantsLimit = 9;
-    uint public feePercent = 1000;
+    uint256 public minMaturity = 3 minutes;
+    uint256 public joiningThreshold = 3;
+    uint256 public participantsLimit = 9;
+    uint256 public feePercent = 1000;
 
     modifier nonZeroValue() {
         require(
@@ -34,10 +34,10 @@ contract ChallengePool is IChallengePool, Ownable {
         _;
     }
 
-    modifier validMaturity(uint _maturity) {
+    modifier validMaturity(uint256 _maturity) {
         require(
             _maturity >= block.timestamp + minMaturity,
-            "Invalid Maturity date"
+            "Invalid Maturity date."
         );
         _;
     }
@@ -52,25 +52,27 @@ contract ChallengePool is IChallengePool, Ownable {
 
     modifier validChallenge(
         uint _topicId,
-        bytes memory _params,
-        bytes memory _proposal
+        string memory _params,
+        int _proposal
     ) {
         ITopicRegistry.Topic memory topic = ITopicRegistry(topicRegistry)
             .getTopic(_topicId);
         require(
             IEvaluator(topic.evaluator).validateChallenge(_params, _proposal),
-            "Invalid params or proposal "
+            "Invalid params or proposal."
         );
         _;
     }
 
     modifier validJoiningTime(uint _challengeId) {
-        uint lockTime = challengePools[_challengeId].createdAt +
-            (challengePools[_challengeId].createdAt -
-                challengePools[_challengeId].maturity) /
-            joiningThreshold;
+        uint256 lockTime = challengePools[_challengeId].createdAt.add(
+            challengePools[_challengeId]
+                .maturity
+                .sub(challengePools[_challengeId].createdAt)
+                .div(joiningThreshold)
+        );
         require(
-            lockTime < block.timestamp,
+            lockTime > block.timestamp,
             "Joining Time Exceeded, Pool Locked."
         );
         _;
@@ -80,7 +82,7 @@ contract ChallengePool is IChallengePool, Ownable {
         require(
             challengePools[_challengeId].participants.length <
                 participantsLimit,
-            "Participants limits exceeded"
+            "Participants limits exceeded."
         );
         _;
     }
@@ -90,7 +92,7 @@ contract ChallengePool is IChallengePool, Ownable {
             .getTopic(_topicId);
         require(
             topic.state == ITopicRegistry.TopicState.active,
-            "Inactive topic"
+            "Inactive topic."
         );
         _;
     }
@@ -103,21 +105,21 @@ contract ChallengePool is IChallengePool, Ownable {
         feeAddress = _feeAddress;
     }
 
-    function setMinMaturity(uint8 _minMaturity) public onlyOwner {
+    function setMinMaturity(uint256 _minMaturity) public onlyOwner {
         minMaturity = _minMaturity;
     }
 
-    function setJoiningThreshold(uint8 _joiningThreshold) public onlyOwner {
+    function setJoiningThreshold(uint256 _joiningThreshold) public onlyOwner {
         joiningThreshold = _joiningThreshold;
     }
 
-    function setParticipantsLimit(uint8 _participantsLimit) public onlyOwner {
+    function setParticipantsLimit(uint256 _participantsLimit) public onlyOwner {
         participantsLimit = _participantsLimit;
     }
 
-    function setFeePercent(uint8 _feePercent) public onlyOwner {
+    function setFeePercent(uint256 _feePercent) public onlyOwner {
         feePercent = _feePercent;
-    } 
+    }
 
     function withdrawFees() public {
         require(accumulatedFees > 0, "Insufficient Transfer Amount.");
@@ -128,9 +130,9 @@ contract ChallengePool is IChallengePool, Ownable {
 
     function createChallenge(
         uint _topicId,
-        uint _maturity,
-        bytes memory _params,
-        bytes memory _proposal
+        uint256 _maturity,
+        string memory _params,
+        int _proposal
     )
         public
         payable
@@ -142,11 +144,12 @@ contract ChallengePool is IChallengePool, Ownable {
     {
         IChallengePool.Participant memory _participant = IChallengePool
             .Participant(msg.sender, _proposal);
-        IChallengePool.Participant[] memory _participants;
+        IChallengePool.Participant[]
+            memory _participants = new IChallengePool.Participant[](1);
         _participants[0] = _participant;
         address[] memory _winners;
         address[] memory _losers;
-        bytes memory _results;
+        int _results;
         challengePools[challengeIdCounter] = IChallengePool.Challenge({
             topicId: _topicId,
             stake: msg.value,
@@ -167,7 +170,7 @@ contract ChallengePool is IChallengePool, Ownable {
 
     function joinChallenge(
         uint _challengeId,
-        bytes memory _proposal
+        int _proposal
     )
         public
         payable
@@ -191,19 +194,19 @@ contract ChallengePool is IChallengePool, Ownable {
             _challengeId
         ];
         require(
-            challenge.maturity > block.timestamp,
+            challenge.maturity < block.timestamp,
             "Pool is not yet matured."
         );
         require(
             challenge.state == IChallengePool.PoolState.open,
             "Pool is not open."
         );
-        uint initPoolBalance = address(this).balance;
-        uint totalChallengeAmount = challenge.stake *
+        uint256 initPoolBalance = address(this).balance;
+        uint256 totalChallengeAmount = challenge.stake *
             challenge.participants.length;
         ITopicRegistry.Topic memory topic = getTopic(_challengeId);
         try IEvaluator(topic.evaluator).evaluateChallenge(challenge) returns (
-            bytes memory results,
+            int results,
             address[] memory losers,
             address[] memory winners
         ) {
@@ -219,7 +222,7 @@ contract ChallengePool is IChallengePool, Ownable {
             if (losers.length > 0 && winners.length > 0) {
                 uint reward = (losers.length * challenge.stake) /
                     winners.length;
-                for (uint256 i = 0; i < losers.length; i++) {
+                for (uint256 i = 0; i < winners.length; i++) {
                     payable(winners[i]).transfer(reward);
                 }
             }
@@ -231,7 +234,7 @@ contract ChallengePool is IChallengePool, Ownable {
                 );
             }
         }
-        uint endPoolBalance = address(this).balance;
+        uint256 endPoolBalance = address(this).balance;
         require(
             endPoolBalance >= initPoolBalance - totalChallengeAmount,
             "Challenge Payout Invariant Failed."
@@ -280,14 +283,14 @@ contract ChallengePool is IChallengePool, Ownable {
         uint[] memory pools = getOpenPools();
         uint size = 0;
         for (uint256 i = 0; i < pools.length; i++) {
-            if (challengePools[pools[i]].maturity >= block.timestamp) {
+            if (challengePools[pools[i]].maturity <= block.timestamp) {
                 size++;
             }
         }
         maturedPools = new uint[](size);
         uint m = 0;
         for (uint256 i = 0; i < pools.length; i++) {
-            if (challengePools[pools[i]].maturity >= block.timestamp) {
+            if (challengePools[pools[i]].maturity <= block.timestamp) {
                 maturedPools[m++] = pools[i];
             }
         }

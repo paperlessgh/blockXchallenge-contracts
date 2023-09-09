@@ -19,7 +19,7 @@ contract PoolManager is IPoolManager, Ownable {
     function checkUpkeep(bytes calldata /* checkData */) external view override returns (bool upkeepNeeded, bytes memory performData) {
         uint[] memory maturedPools = IChallengePool(challengePool)
             .getMaturePools();
-        performData = abi.encodePacked(maturedPools);
+        performData = abi.encode(maturedPools);
         upkeepNeeded = maturedPools.length > 0;
     }
 

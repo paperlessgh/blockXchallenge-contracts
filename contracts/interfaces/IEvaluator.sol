@@ -9,17 +9,13 @@ interface IEvaluator {
         external
         view
         returns (
-            bytes memory results,
+            int results,
             address[] memory losers,
             address[] memory winners
         );
 
     function validateChallenge(
-        bytes memory params,
-        bytes memory proposal
+        string memory params,
+        int proposal
     ) external view returns (bool);
-
-    function resultsType() external view returns (string[] memory);
-
-    function paramsType() external view returns (string[] memory);
 }

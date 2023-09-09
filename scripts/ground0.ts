@@ -1,4 +1,4 @@
-import { encodePacked } from "viem";
+import { encodePacked, encodeAbiParameters, decodeAbiParameters } from "viem";
 
 const proposal = 25888 * 1e8; // alway multiply proposal by 1e8
 

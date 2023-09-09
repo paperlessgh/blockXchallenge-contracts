@@ -109,7 +109,62 @@ A wierd diagram of how the smart contract is all linked together.
   "value": "0"
 }
 ```
-
+3. Optimistic Goerli
+```json
+{
+  "_type": "TransactionReceipt",
+  "accessList": [],
+  "blockNumber": 14406437,
+  "blockHash": "0xa600dffa9dccee9c7fc099e03c289231c4e5f43fc7a02b975cbe7d8a169ececf",
+  "chainId": "420",
+  "data": "0x9f9852E9fED25C8233Cc0796027888599f0E3954",
+  "from": "0xC001c172d6534C9bA10bA20bd2e388F8e2943c67",
+  "gasLimit": "2158277",
+  "gasPrice": "63",
+  "hash": "0x42401ce9c7224a0438d3b9d7a7e8bcf9efb6dec332094d0879e91db06e16588d",
+  "maxFeePerGas": "63",
+  "maxPriorityFeePerGas": "50",
+  "nonce": 16,
+  "signature": {
+    "_type": "signature",
+    "networkV": null,
+    "r": "0x6736d53d1fc41453e44263de22ba59644cf543888fe8c340d1f7bbcf35bc1aba",
+    "s": "0x1ee85f159ea08f4a49acf234413f3eb5186f18b57224f3ded52201c103bc925e",
+    "v": 27
+  },
+  "to": null,
+  "type": 2,
+  "value": "0"
+}
+```
+4. Optimistic Goerli
+```json
+{
+  "_type": "TransactionReceipt",
+  "accessList": [],
+  "blockNumber": 14409968,
+  "blockHash": "0x32aca7f023f1099c6138d8c263b3e168df4bb6b7cdfb9dd3b41aa9c739e26dd8",
+  "chainId": "420",
+  "data": "0xfCc955BEcC20f6AB2E4F2b58A727F19D38BC12e0",
+  "from": "0xC001c172d6534C9bA10bA20bd2e388F8e2943c67",
+  "gasLimit": "2163401",
+  "gasPrice": "100000050",
+  "hash": "0x07c4323e421592d92836278ad9b6d00b86e52c50bebdf237143edf1caffe703c",
+  "maxFeePerGas": "100000063",
+  "maxPriorityFeePerGas": "100000000",
+  "nonce": 24,
+  "signature": {
+    "_type": "signature",
+    "networkV": null,
+    "r": "0xc67c263ffda75d8fcc2d75d318b8087a00e14da3d6d6498fd01fcd2daf769f80",
+    "s": "0x68b5f362d121e631afc7e1aa3e84c5417eab81a2a11403149d33a9d62f0a0aa1",
+    "v": 27
+  },
+  "to": null,
+  "type": 2,
+  "value": "0"
+}
+```
 #### Pool Manager
 1. Optimistic Goerli
 ```json
@@ -160,6 +215,34 @@ A wierd diagram of how the smart contract is all linked together.
     "networkV": null,
     "r": "0x43271a192001e656428a8d169f0496ab76ec1e342762aae11fd9994b418c5415",
     "s": "0x0a691042dfd435c183b85f7a60cef8a0bca99b68068e6186235446e5be6952ba",
+    "v": 27
+  },
+  "to": null,
+  "type": 2,
+  "value": "0"
+}
+```
+3. Optimistic
+```json
+{
+  "_type": "TransactionReceipt",
+  "accessList": [],
+  "blockNumber": 14406546,
+  "blockHash": "0x08dc2df1e66b49afeffbf9a7dd7e61a99f62499a57584172b6f068494afb63cb",
+  "chainId": "420",
+  "data": "0x883C3040182979D7723e41aafbA95Bea352EB238",
+  "from": "0xC001c172d6534C9bA10bA20bd2e388F8e2943c67",
+  "gasLimit": "435109",
+  "gasPrice": "800000050",
+  "hash": "0x995e7cc314b8017cc59a142d5cb76840a96587d5e3fb12eb32f572e26cec0289",
+  "maxFeePerGas": "800000063",
+  "maxPriorityFeePerGas": "800000000",
+  "nonce": 17,
+  "signature": {
+    "_type": "signature",
+    "networkV": null,
+    "r": "0x72c9c31e86ce6197eb06fe2a1b4fd44900709af4ed2cb187df5a47b06d32f244",
+    "s": "0x7215e34a3717ca3339d8323831f53889cbd0c70f231e6cae79fb52630d968c00",
     "v": 27
   },
   "to": null,
@@ -222,6 +305,34 @@ A wierd diagram of how the smart contract is all linked together.
     "r": "0x31efcf56cee39c140e78a3a7c6dbe8daa29179616e8b4d0ffc6b0b4561ea0f77",
     "s": "0x3ac703b3f9a8ec685aa352e9adeba7df47fbd9a5cff10a42e8b9636b446bf3a1",
     "v": 27
+  },
+  "to": null,
+  "type": 2,
+  "value": "0"
+}
+```
+2. Optimistic Goerli
+```json
+{
+  "_type": "TransactionReceipt",
+  "accessList": [],
+  "blockNumber": 14406745,
+  "blockHash": "0x44c29bf25ffd051824745d024741b32f2edfe52815360783a6c4ac98a68cfe28",
+  "chainId": "420",
+  "data": "0xdF2219b830d17D9761f7e84dE20341921B10F52e",
+  "from": "0xC001c172d6534C9bA10bA20bd2e388F8e2943c67",
+  "gasLimit": "394164",
+  "gasPrice": "63",
+  "hash": "0xe9fd5f2025eb8a5046ccdd1b059d4c732e763225b0c89b9ef2c73ad34fccb7c6",
+  "maxFeePerGas": "63",
+  "maxPriorityFeePerGas": "50",
+  "nonce": 20,
+  "signature": {
+    "_type": "signature",
+    "networkV": null,
+    "r": "0x2edb16cff69c774d88ca71fe21dd9f8c07267e981543def7af06c2b253837eab",
+    "s": "0x52405d1839e4eff274cc62972798f3d9c72c8f1ebe7c909f60b56d2bcfd6a5b0",
+    "v": 28
   },
   "to": null,
   "type": 2,

@@ -11,40 +11,40 @@ interface IChallengePool {
     }
     struct Participant {
         address participant;
-        bytes proposal;
+        int proposal;
     }
     struct Challenge {
         uint topicId;
-        uint stake;
-        uint createdAt;
-        uint maturity;
+        uint256 stake;
+        uint256 createdAt;
+        uint256 maturity;
         PoolState state;
         Participant[] participants;
         address[] winners;
         address[] losers;
-        bytes results;
-        bytes params;
+        int results;
+        string params;
     }
     event PoolChallenge(uint indexed challengeId);
 
     function setFeeAddress(address _feeAddress) external;
 
-    function setMinMaturity(uint8 _minMaturity) external;
+    function setMinMaturity(uint256 _minMaturity) external;
 
-    function setJoiningThreshold(uint8 _joiningThreshold) external;
+    function setJoiningThreshold(uint256 _joiningThreshold) external;
 
-    function setFeePercent(uint8 _feePercent) external;
+    function setFeePercent(uint256 _feePercent) external;
 
     function createChallenge(
         uint topicId,
-        uint maturity,
-        bytes memory params,
-        bytes memory proposal
+        uint256 maturity,
+        string memory params,
+        int proposal
     ) external payable returns (uint);
 
     function joinChallenge(
         uint challengeId,
-        bytes memory proposal
+        int proposal
     ) external payable;
 
     function batchCloseChallenge(uint[] memory challengeIds) external;
