@@ -4,9 +4,12 @@
 
 2. Deploy ChallengePool to get `POOL_CONTRACT`
 
-3. Deploy PoolManger
+3. Deploy PoolManger to get `POOL_MANAGER_CONTRACT`
 
 4. Deploy Evaluators
+  - SymbolFeed to get `SYMBOL_FEED_CONTRACT`
+  - AssetPrice to get `ASSET_PRICE_EVALUATOR`
+  - AssetPriceLastValue to get `ASSET_PRICE_LAST_VALUE_EVALUATOR`
 
 5. Create Default Topics
 
@@ -66,6 +69,97 @@
     "r": "0x6b78c07848c1e68b99e85c39581a74cf15bda94e31494994d90f7628ec9cf8d9",
     "s": "0x08e581587ad2af62524115967dd08879efd13ed8e48ceb81e23021f7bc9ce49c",
     "v": 28
+  },
+  "to": null,
+  "type": 2,
+  "value": "0"
+}
+```
+
+#### Pool Manager
+1. Optimistic Goerli
+```json
+{
+  "_type": "TransactionReceipt",
+  "accessList": [],
+  "blockNumber": 14385369,
+  "blockHash": "0x6ebab84c8455aca8a79417d937ef689100440567fef0adbf1b21d0d902be1a52",
+  "chainId": "420",
+  "data": "0xB5313e76dc773A762BbcB66f41b1F1436dfD5f29",
+  "from": "0xC001c172d6534C9bA10bA20bd2e388F8e2943c67",
+  "gasLimit": "294771",
+  "gasPrice": "100000050",
+  "hash": "0xc0fd565dbba8effdfc7ee4eadcf502f2f92934383f23cfd2c930c34e026eca6c",
+  "maxFeePerGas": "100000063",
+  "maxPriorityFeePerGas": "100000000",
+  "nonce": 3,
+  "signature": {
+    "_type": "signature",
+    "networkV": null,
+    "r": "0xe1f8e5c20b4bf5f326f12a26638cc5f8c3eef0ade4b2010c97a03a4c67107bac",
+    "s": "0x12a80998d11845f5ab6f97c2735f44fce3221fe5895114f85266839d5161605c",
+    "v": 28
+  },
+  "to": null,
+  "type": 2,
+  "value": "0"
+}
+```
+
+#### Symbol Feed USD
+1. Optimistic Goerli
+```json
+{
+  "_type": "TransactionReceipt",
+  "accessList": [],
+  "blockNumber": 14392222,
+  "blockHash": "0xd02ba8eb5f2a1664aa67842e2e26a6e78025ee60756587006ca70ea2b30d44bd",
+  "chainId": "420",
+  "data": "0xD6f63ED5b7c90A429DbC090FC2960e60B7f9f0a2",
+  "from": "0xC001c172d6534C9bA10bA20bd2e388F8e2943c67",
+  "gasLimit": "618860",
+  "gasPrice": "100000050",
+  "hash": "0x93b6bf0836a3a73d6d0c347224f6622b728db890cb1c85404d296992faea8473",
+  "maxFeePerGas": "100000063",
+  "maxPriorityFeePerGas": "100000000",
+  "nonce": 6,
+  "signature": {
+    "_type": "signature",
+    "networkV": null,
+    "r": "0x71c114efa9c175dc736288f1e482b32d7c4444bddc6903c41713c27f372ac2aa",
+    "s": "0x3fcc9479a5eea836d6b614d8a0dde66a90ee8c990691a4091d3bfc8278c46a6e",
+    "v": 28
+  },
+  "to": null,
+  "type": 2,
+  "value": "0"
+}
+```
+
+
+#### Asset Price
+1. Optimistic Goerli
+```json
+{
+  "_type": "TransactionReceipt",
+  "accessList": [],
+  "blockNumber": 14394953,
+  "blockHash": "0x6a74c8b875df0689b2ae208045a0a2eaa617f607497353f8b7dd8d5c403a2368",
+  "chainId": "420",
+  "data": "0x6533055bB04062f54A0c70aB794ce1B588216a92",
+  "from": "0xC001c172d6534C9bA10bA20bd2e388F8e2943c67",
+  "gasLimit": "556720",
+  "gasPrice": "1100000001",
+  "hash": "0x03717e4e98a9a80cfba4a2a0d2ed03003868695f081bb4e76b042522222a79c2",
+  "maxFeePerGas": "1100000014",
+  "maxPriorityFeePerGas": "1099999950",
+  "nonce": 8,
+  "signature": {
+    "_type": "signature",
+    "networkV": null,
+    "r": "0x31efcf56cee39c140e78a3a7c6dbe8daa29179616e8b4d0ffc6b0b4561ea0f77",
+    "s": "0x3ac703b3f9a8ec685aa352e9adeba7df47fbd9a5cff10a42e8b9636b446bf3a1",
+    "v": 27
   },
   "to": null,
   "type": 2,

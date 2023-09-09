@@ -1,12 +1,16 @@
 import { ethers } from "hardhat";
+import 'dotenv/config';
+import * as fs from 'fs';
 
 async function main() {
-  const shadow = await ethers.deployContract("PoolChallange");
+  const shadow = await ethers.getContractFactory("SymbolFeedUSD");
 
-  await shadow.waitForDeployment();
+  const pool = await shadow.deploy();
 
-  const { ...tx} = shadow.deploymentTransaction()?.toJSON();
-  tx.data = await shadow.getAddress();
+  await pool.waitForDeployment();
+
+  const { ...tx} = pool.deploymentTransaction()?.toJSON();
+  tx.data = await pool.getAddress();
 
   console.log(`deployed to ${JSON.stringify(tx, null, 2)}`);
 }

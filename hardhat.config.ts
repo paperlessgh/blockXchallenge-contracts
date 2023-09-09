@@ -8,7 +8,7 @@ const optimism: NetworkUserConfig = {
   accounts: [process.env.PRIVATE_KEY!],
 };
 
-const optimismGoerli: NetworkUserConfig = {
+const optimisticGoerli: NetworkUserConfig = {
   url: "https://optimism-goerli.infura.io/v3/82de4c56f4364dd899635d8ebbc349cc",
   chainId: 420,
   accounts: [process.env.PRIVATE_KEY!],
@@ -26,7 +26,7 @@ const config: HardhatUserConfig = {
     },
   },
   networks: {
-    optimismGoerli,
+    optimisticGoerli,
     optimism,
   },
   etherscan: {

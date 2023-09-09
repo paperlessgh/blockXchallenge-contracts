@@ -19,7 +19,7 @@ interface IEvaluator {
         bytes memory proposal
     ) external view returns (bool);
 
-    function resultsType() external view returns (string memory);
+    function resultsType() external view returns (string[] memory);
 
-    function paramsType() external view returns (string memory);
+    function paramsType() external view returns (string[] memory);
 }
